@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ajadonai.github.io/tai/sitemap.xml
