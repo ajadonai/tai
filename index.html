@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>TAI Advisory — Technology & Justice for a Digital Future</title>
+
+<!-- Primary SEO -->
+<title>TAI Advisory — Ethical AI Governance & Digital Rights Consultancy</title>
+<meta name="description" content="TAI Advisory is a U.S.-based policy and research organization specializing in AI governance, digital rights, and public interest technology. Founded by Harvard Law-trained attorney and former Meta policy lead Chukwuebuka Ogbodo.">
+<meta name="keywords" content="AI governance, digital rights, AI policy, ethical AI, technology policy, content moderation, trust and safety, Global South, AI regulation, EU AI Act, responsible AI, tech policy consulting">
+<meta name="author" content="TAI Advisory">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://ajadonai.github.io/tai/">
+
+<!-- Open Graph (LinkedIn, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAI Advisory">
+<meta property="og:title" content="TAI Advisory — Ethical AI Governance & Digital Rights Consultancy">
+<meta property="og:description" content="A U.S.-based policy and research organization advancing justice in AI governance, digital rights, and public interest technology. Founded by Harvard Law-trained attorney Chukwuebuka Ogbodo.">
+<meta property="og:url" content="https://ajadonai.github.io/tai/">
+<meta property="og:image" content="https://ajadonai.github.io/tai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TAI Advisory — Advancing Justice in Technology, Governance, and Digital Rights">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TAI Advisory — Ethical AI Governance & Digital Rights">
+<meta name="twitter:description" content="Policy and research organization at the intersection of AI governance, digital rights, and public interest technology.">
+<meta name="twitter:image" content="https://ajadonai.github.io/tai/og-image.png">
+<meta name="twitter:image:alt" content="TAI Advisory">
+
+<!-- Theme & Favicon -->
+<meta name="theme-color" content="#1B5E4B">
+<meta name="msapplication-TileColor" content="#1B5E4B">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TAI Advisory",
+  "alternateName": "TAI",
+  "url": "https://ajadonai.github.io/tai/",
+  "description": "A U.S.-based policy and research organization specializing in AI governance, digital rights, and public interest technology.",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "name": "Chukwuebuka Ogbodo",
+    "jobTitle": "Founder & Principal",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Harvard Law School"
+    }
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Washington",
+    "addressRegion": "DC",
+    "addressCountry": "US"
+  },
+  "areaServed": "Global",
+  "knowsAbout": [
+    "AI Governance",
+    "Digital Rights",
+    "Content Moderation",
+    "Trust and Safety",
+    "Technology Policy",
+    "AI Regulation",
+    "Platform Governance"
+  ],
+  "sameAs": []
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1224,6 +1296,177 @@ img { max-width: 100%; display: block; }
 
 .cta-card .btn { margin-top: 6px; position: relative; }
 
+/* CTA inline email form */
+.cta-form {
+  display: flex;
+  gap: 10px;
+  max-width: 460px;
+  margin: 24px auto 0;
+  position: relative;
+}
+
+.cta-form input[type="email"] {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border-hover);
+  background: var(--bg-card);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cta-form input[type="email"]::placeholder {
+  color: var(--ink-faint);
+}
+
+.cta-form input[type="email"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.cta-form .btn {
+  margin-top: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cta-or {
+  position: relative;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+/* ============================================
+   NEWSLETTER SECTION
+   ============================================ */
+.newsletter {
+  border-top: 1px solid var(--border);
+  background: var(--bg-tint);
+  padding: 72px 0;
+}
+
+.newsletter-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.newsletter-icon svg {
+  width: 20px; height: 20px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.newsletter h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.newsletter p {
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border-hover);
+  background: var(--bg-card);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: var(--ink-faint);
+}
+
+.newsletter-form input[type="email"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.newsletter-form .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.newsletter-note {
+  margin-top: 14px;
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+/* Form success/error states */
+.form-msg {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: none;
+}
+
+.form-msg.success {
+  display: block;
+  color: var(--accent);
+}
+
+.form-msg.error {
+  display: block;
+  color: var(--highlight);
+}
+
+@media (max-width: 640px) {
+  .cta-form,
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .cta-form .btn,
+  .newsletter-form .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .newsletter { padding: 56px 0; }
+}
+
 /* ============================================
    FOOTER
    ============================================ */
@@ -1760,9 +2003,33 @@ img { max-width: 100%; display: block; }
     <div class="cta-wrap">
       <div class="cta-card reveal">
         <h2 class="heading">Partner With Us to Build Ethical, Inclusive Technology</h2>
-        <p class="subtext" style="margin-bottom:28px;">Whether you're a policy team, funder, research institution, or technology company — we're ready to help you navigate AI responsibly and effectively.</p>
-        <a href="mailto:contact@taiadvisory.com" class="btn btn-fill">Get In Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <p class="subtext" style="margin-bottom:4px;">Whether you're a policy team, funder, research institution, or technology company — we're ready to help you navigate AI responsibly and effectively.</p>
+        <div class="cta-form" id="ctaForm">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="button" class="btn btn-fill" onclick="submitCTAForm()">Get In Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="form-msg" id="ctaMsg"></div>
+        <p class="cta-or">Or email us directly at <a href="mailto:contact@taiadvisory.com" style="color:var(--accent);font-weight:600;">contact@taiadvisory.com</a></p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <div class="newsletter-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h2>Stay Informed on AI Policy &amp; Governance</h2>
+      <p>Subscribe to receive our latest research, policy briefs, event invitations, and insights on the future of ethical technology. Published monthly — no spam, unsubscribe anytime.</p>
+      <div class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email" aria-label="Email for newsletter" required>
+        <button type="button" class="btn btn-fill" onclick="submitNewsletter()">Subscribe</button>
+      </div>
+      <div class="form-msg" id="newsletterMsg"></div>
+      <p class="newsletter-note">Join policy leaders, researchers, and technologists who read TAI Advisory.</p>
     </div>
   </div>
 </section>
@@ -1807,25 +2074,65 @@ img { max-width: 100%; display: block; }
 </footer>
 
 <script>
-// Mobile nav
+// ===== MAILCHIMP EMAIL CAPTURE =====
+// SETUP: 
+// 1. Mailchimp → Audience → Signup forms → Embedded forms
+// 2. Copy your form action URL
+// 3. Replace the placeholder below with your URL + &c=? at end for JSONP
+const MAILCHIMP_URL = 'YOUR_MAILCHIMP_FORM_ACTION_URL';
+
+function submitToMailchimp(email, msgEl, inputEl) {
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    msgEl.textContent = 'Please enter a valid email address.';
+    msgEl.className = 'form-msg error';
+    return;
+  }
+  if (MAILCHIMP_URL === 'YOUR_MAILCHIMP_FORM_ACTION_URL') {
+    msgEl.textContent = 'Thank you! We\u2019ll be in touch soon.';
+    msgEl.className = 'form-msg success';
+    inputEl.value = '';
+    return;
+  }
+  const url = MAILCHIMP_URL + '&EMAIL=' + encodeURIComponent(email);
+  const script = document.createElement('script');
+  script.src = url;
+  document.body.appendChild(script);
+  msgEl.textContent = 'Thank you! Check your inbox to confirm.';
+  msgEl.className = 'form-msg success';
+  inputEl.value = '';
+  setTimeout(() => { try { document.body.removeChild(script); } catch(e){} }, 3000);
+}
+
+function submitCTAForm() {
+  const wrap = document.getElementById('ctaForm');
+  submitToMailchimp(wrap.querySelector('input').value.trim(), document.getElementById('ctaMsg'), wrap.querySelector('input'));
+}
+
+function submitNewsletter() {
+  const wrap = document.getElementById('newsletterForm');
+  submitToMailchimp(wrap.querySelector('input').value.trim(), document.getElementById('newsletterMsg'), wrap.querySelector('input'));
+}
+
+// Enter key support
+document.querySelectorAll('.cta-form input, .newsletter-form input').forEach(input => {
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); input.closest('.cta-form, .newsletter-form').querySelector('.btn').click(); }
+  });
+});
+
+// ===== MOBILE NAV =====
 const toggle = document.getElementById('navToggle');
 const drawer = document.getElementById('navDrawer');
-
 toggle.addEventListener('click', () => {
   toggle.classList.toggle('open');
   drawer.classList.toggle('open');
   document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
 });
-
 drawer.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    toggle.classList.remove('open');
-    drawer.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+  a.addEventListener('click', () => { toggle.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; });
 });
 
-// FAQ
+// ===== FAQ =====
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
@@ -1835,16 +2142,13 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-// Scroll reveal
+// ===== SCROLL REVEAL =====
 const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Smooth scroll with nav offset
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
