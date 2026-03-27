@@ -479,17 +479,25 @@ img { max-width: 100%; display: block; }
 }
 
 .trust-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 15px;
   color: var(--ink-tertiary);
   letter-spacing: -0.01em;
-  opacity: 0.6;
+  opacity: 0.5;
   transition: opacity 0.3s;
   white-space: nowrap;
 }
 
-.trust-logo:hover { opacity: 1; }
+.trust-logo svg {
+  height: 20px;
+  width: auto;
+}
+
+.trust-logo:hover { opacity: 0.85; }
 
 /* ============================================
    SECTIONS
@@ -558,6 +566,28 @@ img { max-width: 100%; display: block; }
   position: relative;
 }
 
+/* Real image inside visual panels */
+.about-visual img,
+.about-visual-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Subtle warm overlay on images for brand cohesion */
+.img-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(26,22,18,0.02) 0%, rgba(26,22,18,0.08) 100%);
+  mix-blend-mode: multiply;
+}
+
 .about-visual-inner::before {
   content: '';
   position: absolute;
@@ -566,6 +596,11 @@ img { max-width: 100%; display: block; }
     linear-gradient(90deg, var(--border) 1px, transparent 1px) 0 0 / 36px 36px,
     linear-gradient(0deg, var(--border) 1px, transparent 1px) 0 0 / 36px 36px;
   opacity: 0.5;
+}
+
+/* Hide grid pattern when real image is present */
+.about-visual--has-img .about-visual-inner::before {
+  display: none;
 }
 
 .about-visual-inner svg { position: relative; z-index: 1; }
@@ -1075,6 +1110,13 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
 }
 
+.prog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .prog-img-inner {
   width: 100%; height: 100%;
   display: flex;
@@ -1086,7 +1128,9 @@ img { max-width: 100%; display: block; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, var(--bg-card));
+  background: linear-gradient(to bottom, rgba(26,22,18,0.03) 0%, var(--bg-card) 92%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .prog-body {
@@ -1702,11 +1746,11 @@ img { max-width: 100%; display: block; }
 <div class="trust-bar">
   <p class="trust-label">Informed by Experience At</p>
   <div class="trust-logos">
-    <span class="trust-logo">Harvard Law</span>
-    <span class="trust-logo">Meta</span>
-    <span class="trust-logo">African Union</span>
-    <span class="trust-logo">UN IGF</span>
-    <span class="trust-logo">ECOWAS</span>
+    <span class="trust-logo"><svg viewBox="0 0 120 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="Georgia,serif" font-size="16" font-weight="600" letter-spacing="-0.5">Harvard Law</text></svg></span>
+    <span class="trust-logo"><svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg"><text x="0" y="19" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="currentColor">Meta</text></svg></span>
+    <span class="trust-logo"><svg viewBox="0 0 130 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="Georgia,serif" font-size="15" font-weight="500" letter-spacing="-0.3">African Union</text></svg></span>
+    <span class="trust-logo"><svg viewBox="0 0 70 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="0.5">UN IGF</text></svg></span>
+    <span class="trust-logo"><svg viewBox="0 0 100 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><text x="0" y="18" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="1">ECOWAS</text></svg></span>
   </div>
 </div>
 
@@ -1808,9 +1852,10 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <div class="reveal">
-        <div class="about-visual" style="aspect-ratio:1/1;">
-          <div class="about-visual-inner" style="background:linear-gradient(225deg, var(--surface) 0%, var(--surface-deep) 100%);">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <div class="about-visual about-visual--has-img" style="aspect-ratio:1/1;">
+          <div class="about-visual-inner">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format" alt="Policy professionals in a strategic working session" loading="lazy">
+            <div class="img-overlay"></div>
           </div>
           <div class="about-tag">Policy · Legal · Technical</div>
         </div>
@@ -1900,9 +1945,7 @@ img { max-width: 100%; display: block; }
     <div class="programs-row stagger">
       <div class="prog reveal">
         <div class="prog-img">
-          <div class="prog-img-inner" style="background:linear-gradient(135deg, #e8f0e4 0%, #d4dfce 100%);">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.35)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
+          <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=800&q=80&auto=format" alt="Young professionals collaborating in a training workshop" loading="lazy">
         </div>
         <div class="prog-body">
           <h3>TAI Fellowship Program</h3>
@@ -1916,9 +1959,7 @@ img { max-width: 100%; display: block; }
       </div>
       <div class="prog reveal">
         <div class="prog-img">
-          <div class="prog-img-inner" style="background:linear-gradient(135deg, #e4e8f0 0%, #ced4df 100%);">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.35)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80&auto=format" alt="Senior stakeholders in a roundtable policy discussion" loading="lazy">
         </div>
         <div class="prog-body">
           <h3>Global AI Governance Roundtables</h3>
