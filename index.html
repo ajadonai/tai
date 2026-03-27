@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>TAI Advisory — Technology & Justice for a Digital Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RESET & VIEWPORT
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Warm ivory palette */
+  --bg: #FAF7F2;
+  --bg-tint: #F3EEE6;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FDFCFA;
+  --surface: #EDE8DF;
+  --surface-deep: #E4DED4;
+
+  /* Text */
+  --ink: #1A1612;
+  --ink-secondary: #5C554B;
+  --ink-tertiary: #8A8279;
+  --ink-faint: #B5AFA7;
+
+  /* Accent — deep forest teal, authoritative but warm */
+  --accent: #1B5E4B;
+  --accent-light: #237A62;
+  --accent-bg: rgba(27, 94, 75, 0.07);
+  --accent-border: rgba(27, 94, 75, 0.14);
+  --accent-text: #164F3F;
+
+  /* Warm highlight for stats / emphasis */
+  --highlight: #C4581A;
+  --highlight-bg: rgba(196, 88, 26, 0.06);
+
+  /* Borders */
+  --border: rgba(26, 22, 18, 0.07);
+  --border-hover: rgba(26, 22, 18, 0.13);
+
+  /* Card elevation system */
+  --card-shadow: 
+    0 1px 2px rgba(26,22,18,0.04),
+    0 4px 12px rgba(26,22,18,0.03);
+  --card-shadow-hover: 
+    0 2px 4px rgba(26,22,18,0.04),
+    0 8px 24px rgba(26,22,18,0.06),
+    0 24px 48px rgba(26,22,18,0.04);
+
+  /* Typography */
+  --font-display: 'Newsreader', 'Georgia', serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  /* Layout */
+  --max-w: 1160px;
+  --gutter: 24px;
+  --section-v: 120px;
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  /* Safe areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: calc(14px + var(--safe-top)) var(--gutter) 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(250, 247, 242, 0.88);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  transition: color 0.25s;
+  letter-spacing: 0.1px;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta-link {
+  padding: 9px 22px !important;
+  background: var(--accent);
+  color: #fff !important;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  transition: all 0.25s !important;
+}
+
+.nav-cta-link:hover {
+  background: var(--accent-light) !important;
+  transform: scale(1.03);
+}
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 21px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.3s;
+  margin: 5px 0;
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.nav-drawer {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 99;
+  background: rgba(250, 247, 242, 0.98);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  padding: calc(80px + var(--safe-top)) var(--gutter) calc(40px + var(--safe-bottom));
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-drawer.open { display: flex; opacity: 1; }
+
+.nav-drawer a {
+  display: block;
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+
+.nav-drawer a:hover { color: var(--accent); }
+
+.nav-drawer .drawer-cta {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 32px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: none;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(120px + var(--safe-top)) var(--gutter) 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle warm radial */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -15%; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse, rgba(27,94,75,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Decorative lines */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 49.8%, var(--border) 49.8%, var(--border) 50.2%, transparent 50.2%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 12px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 32px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+  color: var(--ink-secondary);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-fill {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-fill:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(27,94,75,0.18);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border-hover);
+}
+
+.btn-outline:hover {
+  border-color: var(--ink-tertiary);
+  background: rgba(26,22,18,0.02);
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 15px; height: 15px;
+  transition: transform 0.3s;
+}
+
+.btn:hover svg { transform: translateX(3px); }
+
+/* ============================================
+   TRUST BAR
+   ============================================ */
+.trust-bar {
+  padding: 52px var(--gutter);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  background: var(--bg-tint);
+}
+
+.trust-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 28px;
+}
+
+.trust-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 44px;
+  flex-wrap: wrap;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.trust-logo {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink-tertiary);
+  letter-spacing: -0.01em;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.trust-logo:hover { opacity: 1; }
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section { padding: var(--section-v) 0; }
+
+.section--tint {
+  background: var(--bg-tint);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+
+.subtext {
+  font-size: 0.98rem;
+  color: var(--ink-secondary);
+  max-width: 580px;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 5/4;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+
+.about-visual-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(150deg, var(--surface) 0%, var(--surface-deep) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.about-visual-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--border) 1px, transparent 1px) 0 0 / 36px 36px,
+    linear-gradient(0deg, var(--border) 1px, transparent 1px) 0 0 / 36px 36px;
+  opacity: 0.5;
+}
+
+.about-visual-inner svg { position: relative; z-index: 1; }
+
+.about-tag {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  padding: 8px 15px;
+  background: rgba(255,255,255,0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent);
+  z-index: 2;
+  letter-spacing: 0.3px;
+}
+
+.about-kicker {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.about-body {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.82;
+  font-weight: 400;
+}
+
+/* ============================================
+   MISSION — Theory of Change
+   ============================================ */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 52px;
+}
+
+.mission-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 34px 26px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.mission-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Top accent line */
+.mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* Inner radial glow */
+.mission-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; left: 50%; transform: translateX(-50%);
+  width: 180px; height: 80px;
+  background: radial-gradient(ellipse, rgba(27,94,75,0.04) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.mission-card:hover::before { opacity: 1; }
+.mission-card:hover::after { opacity: 1; }
+
+.mission-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.mission-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.mission-card p {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  line-height: 1.72;
+  font-weight: 400;
+}
+
+/* ============================================
+   SERVICES
+   ============================================ */
+.services-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.services-header .subtext { margin: 0 auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.svc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 34px 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.svc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.svc::after {
+  content: '';
+  position: absolute;
+  top: -30px; left: 50%; transform: translateX(-50%);
+  width: 180px; height: 80px;
+  background: radial-gradient(ellipse, rgba(27,94,75,0.04) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.svc:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.svc:hover::before { opacity: 1; }
+.svc:hover::after { opacity: 1; }
+
+.svc-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.svc-icon svg {
+  width: 18px; height: 18px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svc h3 {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.svc p {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* ============================================
+   WHY TAI
+   ============================================ */
+.why-split {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.diff-list {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.diff {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 14px 18px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-sm);
+  transition: all 0.3s;
+}
+
+.diff:hover {
+  background: rgba(27,94,75,0.1);
+  border-color: rgba(27,94,75,0.2);
+}
+
+.diff-dot {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.diff-dot svg {
+  width: 10px; height: 10px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diff p {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ============================================
+   IMPACT
+   ============================================ */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 52px;
+}
+
+.impact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 34px 26px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.impact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--highlight), rgba(196,88,26,0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.impact-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.impact-card:hover::before { opacity: 1; }
+
+.impact-stat {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--highlight);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.impact-card h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.impact-card p {
+  font-size: 0.84rem;
+  color: var(--ink-secondary);
+  line-height: 1.68;
+  font-weight: 400;
+}
+
+/* ============================================
+   TEAM
+   ============================================ */
+.team-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 52px;
+}
+
+.team-founder {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.team-founder:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-hover);
+}
+
+.founder-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--accent);
+  border: 2px solid var(--border);
+}
+
+.founder-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.founder-role {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: -2px;
+  letter-spacing: 0.3px;
+}
+
+.founder-bio {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  line-height: 1.78;
+  font-weight: 400;
+}
+
+.advisors-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+
+.advisors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.advisor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.35s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.advisor:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.advisor-avi {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-tertiary);
+}
+
+.advisor-info h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.advisor-info p {
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  font-weight: 400;
+}
+
+/* ============================================
+   PROGRAMS
+   ============================================ */
+.programs-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.programs-header .subtext { margin: 0 auto; }
+
+.programs-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.prog {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.prog:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.prog-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+}
+
+.prog-img-inner {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prog-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, var(--bg-card));
+}
+
+.prog-body {
+  padding: 26px 26px 30px;
+}
+
+.prog-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.prog-body > p {
+  font-size: 0.86rem;
+  color: var(--ink-secondary);
+  line-height: 1.72;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.prog-features { display: flex; flex-direction: column; gap: 7px; }
+
+.prog-feat {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+.prog-feat span { color: var(--accent); font-size: 7px; }
+
+/* ============================================
+   INSIGHTS
+   ============================================ */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 52px;
+}
+
+.insight {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: 
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s;
+}
+
+.insight::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.insight:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.insight:hover::before { opacity: 1; }
+
+.insight-type {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.insight h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.insight p {
+  font-size: 0.84rem;
+  color: var(--ink-secondary);
+  line-height: 1.72;
+  font-weight: 400;
+  flex: 1;
+}
+
+.insight-date {
+  margin-top: 16px;
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+/* ============================================
+   FAQ
+   ============================================ */
+.faq-wrap { max-width: 720px; margin: 0 auto; }
+
+.faq-header { text-align: center; margin-bottom: 44px; }
+.faq-header .subtext { margin: 0 auto; }
+
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 20px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  transition: color 0.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faq-q:hover { color: var(--accent); }
+
+.faq-toggle {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--ink-tertiary);
+  transition: all 0.3s;
+}
+
+.faq-item.open .faq-toggle {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-item.open .faq-a { max-height: 220px; }
+
+.faq-a p {
+  padding-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  line-height: 1.78;
+  font-weight: 400;
+}
+
+/* ============================================
+   CTA
+   ============================================ */
+.cta-wrap { text-align: center; }
+
+.cta-card {
+  background: var(--bg-tint);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 80px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -30%; left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 250px;
+  background: radial-gradient(ellipse, rgba(27,94,75,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-card .heading,
+.cta-card .subtext {
+  position: relative;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-card .btn { margin-top: 6px; position: relative; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 52px var(--gutter) calc(32px + var(--safe-bottom));
+  background: var(--bg);
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 44px;
+}
+
+.footer-brand .nav-logo { display: block; margin-bottom: 8px; }
+
+.footer-tag {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.footer-col h4 {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer-col ul a {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  font-weight: 400;
+  transition: color 0.25s;
+}
+
+.footer-col ul a:hover { color: var(--ink); }
+
+.footer-bottom {
+  max-width: var(--max-w);
+  margin: 32px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.hero-inner {
+  animation: fadeUp 0.85s cubic-bezier(0.16,1,0.3,1) 0.12s forwards;
+  opacity: 0;
+}
+
+.stagger > *:nth-child(1) { transition-delay: 0.04s; }
+.stagger > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger > *:nth-child(3) { transition-delay: 0.16s; }
+.stagger > *:nth-child(4) { transition-delay: 0.22s; }
+
+/* ============================================
+   RESPONSIVE — Tablet
+   ============================================ */
+@media (max-width: 1024px) {
+  :root { --section-v: 88px; --gutter: 28px; }
+
+  .about-split, .why-split, .team-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .services-grid { grid-template-columns: 1fr; }
+
+  .mission-grid, .impact-grid, .insights-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .programs-row { grid-template-columns: 1fr; }
+
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+  /* Reorder why section so image comes first */
+  .why-split > *:last-child { order: -1; }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile
+   ============================================ */
+@media (max-width: 640px) {
+  :root { --section-v: 64px; --gutter: 18px; }
+
+  .nav { padding: calc(10px + var(--safe-top)) 16px 10px; }
+  .nav-logo { font-size: 15px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  .hero {
+    padding: calc(100px + var(--safe-top)) var(--gutter) 64px;
+    min-height: auto;
+  }
+
+  .hero h1 { font-size: clamp(1.9rem, 7.5vw, 2.4rem); }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn { justify-content: center; }
+
+  .trust-logos { gap: 24px; }
+  .trust-logo { font-size: 13px; }
+
+  .mission-grid, .impact-grid, .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-visual { aspect-ratio: 4/3; }
+
+  .svc { padding: 26px 22px; }
+
+  .cta-card {
+    padding: 52px 22px;
+    border-radius: var(--radius);
+  }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+
+  .team-layout { gap: 32px; }
+  .team-founder { padding: 28px 22px; }
+
+  .nav-drawer a { font-size: 1.3rem; padding: 16px 0; }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  :root { --gutter: 14px; }
+  .hero h1 { font-size: 1.7rem; }
+  .heading { font-size: 1.6rem; }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .hero-inner { opacity: 1; }
+}
+
+/* Safari 100vh fix */
+@supports (-webkit-touch-callout: none) {
+  .hero { min-height: -webkit-fill-available; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">TAI Advisory</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#mission">Our Approach</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact" class="nav-cta-link">Book a Call</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="#about">About</a>
+  <a href="#mission">Our Approach</a>
+  <a href="#services">Services</a>
+  <a href="#impact">Impact</a>
+  <a href="#insights">Insights</a>
+  <a href="#contact" class="drawer-cta">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Policy · Research · Advisory</div>
+    <h1>Advancing <em>Justice</em> in Technology, Governance, and Digital Rights</h1>
+    <p class="hero-sub">TAI Advisory is a U.S.-based policy and research organization at the intersection of AI governance, digital rights, and public interest technology. We bring a global justice lens to the design, regulation, and deployment of emerging technologies.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn btn-fill">Explore Our Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#about" class="btn btn-outline">Meet the Founder <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <p class="trust-label">Informed by Experience At</p>
+  <div class="trust-logos">
+    <span class="trust-logo">Harvard Law</span>
+    <span class="trust-logo">Meta</span>
+    <span class="trust-logo">African Union</span>
+    <span class="trust-logo">UN IGF</span>
+    <span class="trust-logo">ECOWAS</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-visual reveal">
+        <div class="about-visual-inner">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div class="about-tag">Founded 2024 · Washington, D.C.</div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">About TAI Advisory</span>
+        <p class="about-kicker">A Policy &amp; Research Organization with a Global Justice Lens</p>
+        <h2 class="heading">Bridging Technology, Law, and Human Rights</h2>
+        <p class="about-body">Founded by Harvard Law-trained attorney and former Meta policy lead Chukwuebuka Ogbodo, TAI Advisory bridges the gap between technology, law, and human rights. We specialize in advising on AI governance and digital rights through cutting-edge, data-informed strategies — amplifying underrepresented voices in tech policy and working across borders, cultures, and legal systems to advance equitable technology frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section section--tint" id="mission">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="eyebrow">Our Approach</span>
+      <h2 class="heading">Theory of Change</h2>
+      <p class="subtext" style="margin:0 auto;">We believe just technology requires three foundations: informed policy, inclusive research, and empowered communities.</p>
+    </div>
+    <div class="mission-grid stagger">
+      <div class="mission-card reveal">
+        <div class="mission-num">01</div>
+        <h3>Research &amp; Analyze</h3>
+        <p>We produce rigorous, independent research on AI systems, digital rights, and platform governance — centering perspectives from the Global South and marginalized communities.</p>
+      </div>
+      <div class="mission-card reveal">
+        <div class="mission-num">02</div>
+        <h3>Advise &amp; Shape</h3>
+        <p>We work directly with policymakers, companies, and multilateral bodies to craft regulation and governance frameworks that are fair, transparent, and technically grounded.</p>
+      </div>
+      <div class="mission-card reveal">
+        <div class="mission-num">03</div>
+        <h3>Build &amp; Empower</h3>
+        <p>Through fellowship programs and convenings, we develop the next generation of diverse policy leaders and foster cross-sector dialogue on the future of ethical technology.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="eyebrow">What We Offer</span>
+      <h2 class="heading">Core Advisory Services</h2>
+      <p class="subtext">We help organizations navigate complex regulatory environments, build responsible AI frameworks, and ensure their technologies are safe, fair, and transparent.</p>
+    </div>
+    <div class="services-grid stagger">
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>AI Governance &amp; Regulatory Strategy</h3>
+        <p>Ensure compliance with evolving AI laws like the EU AI Act and U.S. executive orders. We develop tailored internal governance frameworks and provide comprehensive risk assessment.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Digital Rights &amp; Content Policy</h3>
+        <p>Design effective platform governance and content moderation strategies while ensuring privacy and data protection compliance. Navigate cross-border digital rights challenges.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Trust &amp; Safety Strategy</h3>
+        <p>Identify, assess, and mitigate algorithmic bias, develop inclusive AI frameworks, and actively engage stakeholders to build lasting trust across your AI systems.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Policy Research &amp; Thought Leadership</h3>
+        <p>Produce insightful white papers, policy briefs, and custom research to inform strategic decisions and position your organization as a leader in AI governance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TAI -->
+<section class="section section--tint">
+  <div class="container">
+    <div class="why-split">
+      <div class="reveal">
+        <span class="eyebrow">Why TAI Advisory?</span>
+        <p class="about-kicker">Rooted in Real-World Policy Experience</p>
+        <h2 class="heading">We Don't Just Observe Policy — We Shape It</h2>
+        <p class="subtext">With experience influencing legislation in multiple countries and leading policy strategy for Meta in Africa, we bring unmatched insight into what ethical AI looks like across borders, cultures, and legal systems.</p>
+        <div class="diff-list">
+          <div class="diff"><div class="diff-dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p>Only U.S.-based AI consultancy offering a Global South perspective at enterprise scale</p></div>
+          <div class="diff"><div class="diff-dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p>Proven success in both corporate and government policy influence</p></div>
+          <div class="diff"><div class="diff-dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p>Deep legal and technical fluency in AI, privacy, and platform governance</p></div>
+          <div class="diff"><div class="diff-dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><p>Active networks across academia, multilateral agencies, and tech industry</p></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="about-visual" style="aspect-ratio:1/1;">
+          <div class="about-visual-inner" style="background:linear-gradient(225deg, var(--surface) 0%, var(--surface-deep) 100%);">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.3)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="about-tag">Policy · Legal · Technical</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section" id="impact">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="eyebrow">Our Impact</span>
+      <h2 class="heading">Track Record &amp; Reach</h2>
+      <p class="subtext" style="margin:0 auto;">Evidence of our work influencing policy, building capacity, and advancing responsible technology across the globe.</p>
+    </div>
+    <div class="impact-grid stagger">
+      <div class="impact-card reveal">
+        <div class="impact-stat">5+</div>
+        <h4>Countries Influenced</h4>
+        <p>Direct policy advisory contributions to AI and digital rights legislation across Africa, Europe, and North America.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-stat">20+</div>
+        <h4>Stakeholder Engagements</h4>
+        <p>Convenings, roundtables, and advisory sessions with government officials, tech executives, and civil society leaders.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-stat">3</div>
+        <h4>Research Publications</h4>
+        <p>Original policy briefs and white papers on AI governance, content moderation, and digital rights in emerging markets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section section--tint" id="team">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Leadership</span>
+      <h2 class="heading">Founder &amp; Advisory Board</h2>
+      <p class="subtext">Led by experienced practitioners in policy, law, and technology — with deep networks across government, industry, and academia.</p>
+    </div>
+    <div class="team-layout">
+      <div class="team-founder reveal">
+        <div class="founder-avatar">CO</div>
+        <div>
+          <h3 class="founder-name">Chukwuebuka Ogbodo</h3>
+          <p class="founder-role">Founder &amp; Principal</p>
+        </div>
+        <p class="founder-bio">Harvard Law School-trained attorney and former public policy lead at Meta for Sub-Saharan Africa. Chukwuebuka has shaped AI governance frameworks across multiple jurisdictions and brings a rare combination of legal expertise, corporate policy experience, and deep commitment to global justice in technology.</p>
+      </div>
+      <div class="reveal">
+        <p class="advisors-label">Advisory Board</p>
+        <div class="advisors-list">
+          <div class="advisor">
+            <div class="advisor-avi">AB</div>
+            <div class="advisor-info"><h4>Advisory Member</h4><p>AI Ethics Researcher · Stanford University</p></div>
+          </div>
+          <div class="advisor">
+            <div class="advisor-avi">CD</div>
+            <div class="advisor-info"><h4>Advisory Member</h4><p>Former Senior Policy Director · U.S. Government</p></div>
+          </div>
+          <div class="advisor">
+            <div class="advisor-avi">EF</div>
+            <div class="advisor-info"><h4>Advisory Member</h4><p>Digital Rights Advocate · Access Now</p></div>
+          </div>
+          <div class="advisor">
+            <div class="advisor-avi">GH</div>
+            <div class="advisor-info"><h4>Advisory Member</h4><p>Tech Policy Lead · African Development Bank</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section" id="programs">
+  <div class="container">
+    <div class="programs-header reveal">
+      <span class="eyebrow">Signature Programs</span>
+      <h2 class="heading">Flagship Initiatives</h2>
+      <p class="subtext">Our programs foster leadership, community, and dialogue in ethical AI governance and global digital rights.</p>
+    </div>
+    <div class="programs-row stagger">
+      <div class="prog reveal">
+        <div class="prog-img">
+          <div class="prog-img-inner" style="background:linear-gradient(135deg, #e8f0e4 0%, #d4dfce 100%);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.35)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+        <div class="prog-body">
+          <h3>TAI Fellowship Program</h3>
+          <p>A year-long initiative empowering future AI policy leaders from underrepresented communities through mentorship, training, and global exposure.</p>
+          <div class="prog-features">
+            <div class="prog-feat"><span>◆</span> 12-month training for emerging AI policy leaders</div>
+            <div class="prog-feat"><span>◆</span> Prioritizes underrepresented voices in tech governance</div>
+            <div class="prog-feat"><span>◆</span> Supported by corporate sponsorships</div>
+          </div>
+        </div>
+      </div>
+      <div class="prog reveal">
+        <div class="prog-img">
+          <div class="prog-img-inner" style="background:linear-gradient(135deg, #e4e8f0 0%, #ced4df 100%);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(27,94,75,0.35)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+        </div>
+        <div class="prog-body">
+          <h3>Global AI Governance Roundtables</h3>
+          <p>Exclusive convenings designed to foster strategic dialogue among senior stakeholders shaping the future of ethical AI governance.</p>
+          <div class="prog-features">
+            <div class="prog-feat"><span>◆</span> Quarterly closed-door events for 25–30 senior stakeholders</div>
+            <div class="prog-feat"><span>◆</span> High-level dialogue on AI policy and governance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="section section--tint" id="insights">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="eyebrow">Insights &amp; Publications</span>
+      <h2 class="heading">Thought Leadership</h2>
+      <p class="subtext" style="margin:0 auto;">Original research, policy analysis, and perspectives on AI governance, digital rights, and technology justice.</p>
+    </div>
+    <div class="insights-grid stagger">
+      <div class="insight reveal">
+        <span class="insight-type">Policy Brief</span>
+        <h4>Governing AI in Africa: Challenges and Pathways Forward</h4>
+        <p>An analysis of AI regulation gaps across African nations and a framework for inclusive governance that centers local contexts.</p>
+        <span class="insight-date">Coming Q2 2025</span>
+      </div>
+      <div class="insight reveal">
+        <span class="insight-type">White Paper</span>
+        <h4>Content Moderation at Scale: Lessons from the Global South</h4>
+        <p>Drawing on firsthand experience at Meta, this paper examines how platform policies fail communities in non-Western contexts.</p>
+        <span class="insight-date">Coming Q3 2025</span>
+      </div>
+      <div class="insight reveal">
+        <span class="insight-type">Commentary</span>
+        <h4>Why the EU AI Act Needs a Global Justice Perspective</h4>
+        <p>A critical examination of how European AI regulation intersects with — and often overlooks — impacts on developing economies.</p>
+        <span class="insight-date">Coming Q4 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-wrap">
+      <div class="faq-header reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="heading">Frequently Asked Questions</h2>
+        <p class="subtext">Clear answers about our services, approach, and how we help clients navigate AI and digital policy.</p>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What does TAI Advisory specialize in?<span class="faq-toggle">+</span></button>
+        <div class="faq-a"><p>TAI Advisory specializes in AI governance, digital rights, content policy, trust and safety strategy, and policy research. We help organizations navigate the regulatory landscape and build responsible AI frameworks grounded in global justice.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Who are the typical clients?<span class="faq-toggle">+</span></button>
+        <div class="faq-a"><p>Our clients include technology companies, governments, NGOs, multilateral organizations, foundations, and academic institutions seeking guidance on ethical AI deployment, digital policy, and inclusive technology governance.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What makes TAI Advisory different?<span class="faq-toggle">+</span></button>
+        <div class="faq-a"><p>We are the only U.S.-based AI advisory offering a Global South perspective at enterprise scale. Our founder's experience leading policy at Meta and influencing legislation across multiple countries gives us unmatched cross-border insight.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What is the TAI Fellowship Program?<span class="faq-toggle">+</span></button>
+        <div class="faq-a"><p>A 12-month program designed to empower emerging AI policy leaders from underrepresented communities through mentorship, hands-on training, and global exposure opportunities.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How can we collaborate with TAI Advisory?<span class="faq-toggle">+</span></button>
+        <div class="faq-a"><p>We welcome collaboration with organizations committed to ethical technology. Reach out to discuss partnership opportunities, research collaborations, speaking engagements, or advisory arrangements.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="cta-wrap">
+      <div class="cta-card reveal">
+        <h2 class="heading">Partner With Us to Build Ethical, Inclusive Technology</h2>
+        <p class="subtext" style="margin-bottom:28px;">Whether you're a policy team, funder, research institution, or technology company — we're ready to help you navigate AI responsibly and effectively.</p>
+        <a href="mailto:contact@taiadvisory.com" class="btn btn-fill">Get In Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo">TAI Advisory</span>
+      <p class="footer-tag">AI Governance · Digital Rights · Ethical Tech Policy · Global Justice</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#impact">Impact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#programs">Fellowship</a></li>
+        <li><a href="#programs">Roundtables</a></li>
+        <li><a href="#insights">Publications</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Twitter / X</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 TAI Advisory. All rights reserved.</span>
+    <span>Empowering ethical innovation with global justice at the core.</span>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+const toggle = document.getElementById('navToggle');
+const drawer = document.getElementById('navDrawer');
+
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+});
+
+drawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    toggle.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Smooth scroll with nav offset
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.pageYOffset - document.getElementById('nav').offsetHeight - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
