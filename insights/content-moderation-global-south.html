@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Content Moderation at Scale: Lessons from the Global South — TAI Advisory</title>
+<meta name="description" content="How platform content moderation policies systematically fail communities in non-Western contexts, and what young policy leaders can do about it.">
+<meta property="og:title" content="Content Moderation at Scale: Lessons from the Global South">
+<meta property="og:description" content="How platform policies fail communities in non-Western contexts, drawn from firsthand experience leading policy at Meta for Sub-Saharan Africa.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ajadonai.github.io/tai/insights/content-moderation-global-south.html">
+<meta property="og:image" content="https://ajadonai.github.io/tai/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1B5E4B">
+<link rel="canonical" href="https://ajadonai.github.io/tai/insights/content-moderation-global-south.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#FAF7F2;--bg-tint:#F4EFE7;--bg-card:#FFFFFF;--ink:#1A1612;--ink-secondary:#5C554B;--ink-tertiary:#8A8279;--ink-faint:#B5AFA7;--accent:#1B5E4B;--accent-light:#237A62;--accent-bg:rgba(27,94,75,0.06);--accent-border:rgba(27,94,75,0.12);--highlight:#C4581A;--border:rgba(26,22,18,0.07);--border-hover:rgba(26,22,18,0.13);--font-display:'Newsreader','Georgia',serif;--font-body:'Manrope',system-ui,sans-serif;--max-w:760px;--gutter:24px;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.nav{position:sticky;top:0;z-index:50;padding:calc(14px + var(--safe-top)) var(--gutter) 14px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,247,242,0.9);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--ink)}
+.nav-back{font-size:13.5px;font-weight:500;color:var(--ink-secondary);display:flex;align-items:center;gap:6px;transition:color 0.25s}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:16px;height:16px}
+.article-header{max-width:var(--max-w);margin:0 auto;padding:calc(40px + var(--safe-top)) var(--gutter) 0}
+.article-type{font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.article-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:500;line-height:1.18;letter-spacing:-0.02em;margin-bottom:16px}
+.article-meta{font-size:0.85rem;color:var(--ink-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.article-summary{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--ink-secondary);line-height:1.7;margin:24px 0 0;padding:20px 0;border-top:1px solid var(--border)}
+.article-body{max-width:var(--max-w);margin:0 auto;padding:40px var(--gutter) 80px}
+.article-body h2{font-family:var(--font-display);font-size:1.5rem;font-weight:500;margin:40px 0 16px;letter-spacing:-0.01em}
+.article-body h3{font-family:var(--font-display);font-size:1.15rem;font-weight:500;margin:32px 0 12px}
+.article-body p{font-size:0.95rem;color:var(--ink-secondary);line-height:1.85;margin-bottom:20px}
+.article-body p strong{color:var(--ink);font-weight:600}
+.article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--accent-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--ink-secondary);line-height:1.7}
+.takeaways{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;margin:36px 0;box-shadow:0 1px 2px rgba(26,22,18,0.04),0 4px 12px rgba(26,22,18,0.03)}
+.takeaways h3{font-family:var(--font-display);font-size:1.1rem;font-weight:500;margin:0 0 14px;color:var(--accent)}
+.takeaways ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.takeaways li{display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:var(--ink-secondary);line-height:1.65}
+.takeaways li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;margin-top:1px}
+.article-cta{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter) 80px;text-align:center}
+.article-cta-box{background:var(--bg-tint);border:1px solid var(--border);border-radius:14px;padding:48px 32px}
+.article-cta-box h3{font-family:var(--font-display);font-size:1.3rem;font-weight:500;margin-bottom:10px}
+.article-cta-box p{font-size:0.9rem;color:var(--ink-secondary);margin-bottom:20px;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:12px 26px;border-radius:100px;font-family:var(--font-body);font-size:13.5px;font-weight:600;border:none;cursor:pointer;background:var(--accent);color:#fff;transition:all 0.3s}
+.btn:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,94,75,0.15)}
+.footer{border-top:1px solid var(--border);padding:32px var(--gutter) calc(24px + var(--safe-bottom));text-align:center}
+.footer p{font-size:0.78rem;color:var(--ink-faint)}
+@media(max-width:640px){.article-header{padding-top:calc(32px + var(--safe-top))}.article-title{font-size:1.5rem}.article-body{padding:28px var(--gutter) 60px}.article-cta-box{padding:36px 20px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../" class="nav-logo">TAI Advisory</a>
+  <a href="../#insights" class="nav-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Insights</a>
+</nav>
+
+<header class="article-header">
+  <span class="article-type">White Paper</span>
+  <h1 class="article-title">Content Moderation at Scale: Lessons from the Global South</h1>
+  <div class="article-meta">
+    <span>TAI Advisory</span>
+    <span>·</span>
+    <span>2025</span>
+    <span>·</span>
+    <span>10 min read</span>
+  </div>
+  <p class="article-summary">Drawing on firsthand experience leading content policy at Meta for Sub-Saharan Africa, this paper examines how platform moderation systems consistently fail communities outside the Western context they were designed for — and argues that young professionals from affected regions are the key to fixing them.</p>
+</header>
+
+<article class="article-body">
+
+  <div class="takeaways">
+    <h3>Key Takeaways</h3>
+    <ul>
+      <li>Content moderation systems are designed primarily for English-language, Western-context content — creating systemic blind spots for the majority of the world's internet users.</li>
+      <li>Under-investment in language coverage means harmful content in African, South Asian, and Southeast Asian languages often goes undetected while legitimate speech is over-censored.</li>
+      <li>Election-related content moderation failures in the Global South have had real-world consequences, including violence, that comparable failures in Western markets would not have gone unaddressed.</li>
+      <li>The solution is not just better algorithms — it is hiring, training, and empowering young policy professionals from affected communities to lead moderation strategy.</li>
+      <li>Platforms must move from reactive, crisis-driven engagement with the Global South to proactive, relationship-driven governance built on local knowledge.</li>
+    </ul>
+  </div>
+
+  <h2>The Structural Problem</h2>
+
+  <p>When a major social media platform decides how to moderate content, it is making a governance decision that affects billions of people. These decisions — what constitutes hate speech, how to handle misinformation during elections, when to remove versus label versus leave content up — are among the most consequential policy choices being made anywhere in the world today.</p>
+
+  <p>The problem is that these decisions are overwhelmingly made by teams based in Silicon Valley, Dublin, or Singapore, operating within frameworks built for English-language content in Western democratic contexts. The systems, both human and algorithmic, that determine what stays up and what comes down were not designed with Lagos, Nairobi, or Dhaka in mind.</p>
+
+  <p>This is not a matter of individual bias or bad intentions. It is a structural issue. When the foundational assumptions of a moderation system — what language looks like, what political context means, what constitutes a credible threat — are calibrated to one part of the world, the system will systematically fail everywhere else.</p>
+
+  <h2>The Language Gap</h2>
+
+  <p>The most visible manifestation of this structural failure is language coverage. Major platforms invest heavily in English-language moderation — both through automated classifiers and human review teams. Coverage for French, Spanish, and Arabic is typically the next tier. But for the hundreds of languages spoken across Sub-Saharan Africa, South Asia, and Southeast Asia, coverage drops off dramatically.</p>
+
+  <p><strong>The consequences are concrete.</strong> Hate speech targeting ethnic groups circulates freely in languages where automated detection is weak or nonexistent. Meanwhile, legitimate political speech in those same languages is sometimes flagged and removed by blunt keyword-based systems that lack the contextual understanding to distinguish between genuine threats and normal discourse.</p>
+
+  <p>This creates a perverse dynamic: the communities most vulnerable to online harms are the least protected by moderation systems, while simultaneously being the most likely to have their legitimate speech suppressed.</p>
+
+  <h2>Election Integrity as a Case Study</h2>
+
+  <p>Elections represent the highest-stakes test of content moderation systems, and it is in election contexts that the gap between Global North and Global South coverage becomes most dangerous.</p>
+
+  <p>When a major election approaches in the United States, the United Kingdom, or France, platforms mobilize dedicated teams, build bespoke classifiers, establish war rooms, and coordinate with election commissions, civil society, and media organizations. The investment is substantial and the response is proactive.</p>
+
+  <p>When comparable elections take place in Nigeria, Ethiopia, Kenya, or Myanmar, the response has historically been reactive, under-resourced, and late. Platforms often lack the local language capacity, contextual expertise, and on-the-ground relationships needed to identify emerging threats before they escalate.</p>
+
+  <blockquote>The pattern is consistent: platforms invest heavily in preventing moderation failures that would generate headlines in Western media, while tolerating equivalent or worse failures in markets they consider less commercially important.</blockquote>
+
+  <p>The human consequences of this disparity are not abstract. When moderation systems fail during African elections, the result is not just a bad news cycle — it is the potential for real-world violence, political manipulation, and erosion of democratic institutions that are often already fragile.</p>
+
+  <h2>Why Algorithms Alone Won't Fix This</h2>
+
+  <p>The technology industry's instinct when confronted with moderation failures is to invest in better algorithms — more sophisticated classifiers, more training data, more automation. And while technical improvements are necessary, they are not sufficient.</p>
+
+  <p><strong>Context is the fundamental challenge.</strong> The same phrase can be harmless political satire in one country and a call to ethnic violence in another. The same image can be a cultural celebration in one context and an incitement to hatred in another. No algorithm, no matter how sophisticated, can reliably make these distinctions without deep cultural and political knowledge.</p>
+
+  <p>What is needed is human judgment — specifically, the judgment of people who understand the contexts in which content is produced and consumed. This means hiring and empowering policy professionals from the communities being moderated, not as an afterthought, but as the foundation of moderation strategy.</p>
+
+  <h2>The Youth Opportunity</h2>
+
+  <p>Here is where the challenge becomes an opportunity. Africa has the youngest population of any continent, and its young people are disproportionately online, multilingual, and digitally literate. They understand the platforms, the languages, the cultural contexts, and the political dynamics that external moderation teams struggle with.</p>
+
+  <p>What they lack is not knowledge — it is access. Access to the roles, the training programs, the professional networks, and the institutional pathways that would allow them to bring their expertise to bear on these problems. Building these pathways is not charity; it is the single most effective investment any platform or organization can make in improving content moderation outcomes globally.</p>
+
+  <p>Young Nigerian professionals who understand the difference between Yoruba political satire and genuine incitement can do what a classifier trained on English-language data cannot. Young Kenyan researchers who understand the dynamics of ethnic mobilization on WhatsApp can identify threats that a Silicon Valley-based team will miss every time. The expertise exists — it just needs to be systematically developed and deployed.</p>
+
+  <h2>Recommendations</h2>
+
+  <h3>For platforms</h3>
+  <p>Move from reactive crisis response to proactive, embedded presence in Global South markets. This means hiring local policy teams with genuine decision-making authority, investing in language coverage proportional to user populations, and establishing standing relationships with local civil society — not just during election season.</p>
+
+  <h3>For policymakers</h3>
+  <p>Develop regulatory frameworks that require transparency about moderation resource allocation across markets. If a platform has 100 million users in a country, regulators have a legitimate interest in knowing whether moderation investment is proportional to that user base.</p>
+
+  <h3>For funders and institutions</h3>
+  <p>Invest in the pipeline. Fund fellowship programs, research initiatives, and training opportunities that develop young Global South professionals into content policy leaders. The return on this investment — in terms of moderation quality, platform accountability, and democratic resilience — is extraordinary.</p>
+
+  <h3>For young professionals</h3>
+  <p>This is a field where your perspective is not just welcome — it is essential. The platforms and organizations making moderation decisions need your knowledge, your language skills, and your contextual understanding. Seek out training, build your policy writing skills, and position yourself to lead. Programs like the TAI Fellowship exist specifically to help you do this.</p>
+
+</article>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h3>Want to shape how platforms govern content in your community?</h3>
+    <p>The TAI Fellowship trains young professionals to lead on content policy, platform governance, and digital rights.</p>
+    <a href="../#programs" class="btn">Explore the Fellowship</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2024 TAI Advisory. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
