@@ -1223,6 +1223,27 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
 }
 
+.insight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: gap 0.3s;
+}
+
+.insight-link:hover { gap: 8px; }
+
+.insight-link svg {
+  width: 14px; height: 14px;
+}
+
+a.insight {
+  cursor: pointer;
+}
+
 /* ============================================
    FAQ
    ============================================ */
@@ -1966,24 +1987,24 @@ img { max-width: 100%; display: block; }
       <p class="subtext" style="margin:0 auto;">Original research and analysis by TAI fellows and collaborators — amplifying young voices in the global AI governance conversation.</p>
     </div>
     <div class="insights-grid stagger">
-      <div class="insight reveal">
+      <a href="insights/governing-ai-africa.html" class="insight s-card reveal">
         <span class="insight-type">Policy Brief</span>
         <h4>Governing AI in Africa: Challenges and Pathways Forward</h4>
-        <p>An analysis of AI regulation gaps across African nations and a framework for inclusive governance that centers local contexts.</p>
-        <span class="insight-date">Coming Q2 2025</span>
-      </div>
-      <div class="insight reveal">
+        <p>Only a handful of African nations have formal AI strategies, leaving most of the continent in a regulatory vacuum. This brief maps the landscape, identifies gaps, and proposes a youth-centered framework for inclusive governance.</p>
+        <span class="insight-link">Read the brief <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="insights/content-moderation-global-south.html" class="insight s-card reveal">
         <span class="insight-type">White Paper</span>
         <h4>Content Moderation at Scale: Lessons from the Global South</h4>
-        <p>Drawing on firsthand experience at Meta, this paper examines how platform policies fail communities in non-Western contexts.</p>
-        <span class="insight-date">Coming Q3 2025</span>
-      </div>
-      <div class="insight reveal">
+        <p>Drawing on firsthand experience at Meta, this paper examines how moderation systems built for Western contexts systematically fail Global South communities — and why young professionals from affected regions are the key to fixing them.</p>
+        <span class="insight-link">Read the paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="insights/eu-ai-act-global-accountability.html" class="insight s-card reveal">
         <span class="insight-type">Commentary</span>
         <h4>Why the EU AI Act Needs a Global Accountability Perspective</h4>
-        <p>A critical examination of how European AI regulation intersects with — and often overlooks — impacts on developing economies.</p>
-        <span class="insight-date">Coming Q4 2025</span>
-      </div>
+        <p>The EU AI Act will function as a de facto global standard — but it was built without meaningful Global South input. This commentary examines what young policy leaders can do to shape the conversation on their own terms.</p>
+        <span class="insight-link">Read the commentary <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
