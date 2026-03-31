@@ -950,12 +950,9 @@ img { max-width: 100%; display: block; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 40px 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  overflow: hidden;
   box-shadow: var(--card-shadow);
   margin-bottom: 40px;
   transition: 
@@ -971,18 +968,22 @@ img { max-width: 100%; display: block; }
 }
 
 .founder-avatar {
-  width: 96px; height: 96px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 3px solid var(--border);
+  width: 100%; height: 100%;
   object-fit: cover;
-  box-shadow: 0 2px 12px rgba(26,22,18,0.08);
-  margin-bottom: 16px;
+  display: block;
+  min-height: 280px;
+}
+
+.founder-content {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .founder-name {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: var(--ink);
 }
@@ -992,7 +993,7 @@ img { max-width: 100%; display: block; }
   color: var(--accent);
   font-weight: 600;
   letter-spacing: 0.3px;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .founder-bio {
@@ -1000,7 +1001,6 @@ img { max-width: 100%; display: block; }
   color: var(--ink-secondary);
   line-height: 1.78;
   font-weight: 400;
-  max-width: 560px;
 }
 
 .advisors-label {
@@ -1893,7 +1893,10 @@ a.insight {
   .footer-brand { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 
-  .team-founder { padding: 28px 22px; }
+  .team-founder { padding: 0; }
+  .team-founder { grid-template-columns: 1fr; }
+  .founder-avatar { min-height: 240px; max-height: 280px; }
+  .founder-content { padding: 28px 22px; }
   .advisors-list { grid-template-columns: 1fr; }
   .advisor { padding: 24px 18px; }
 
@@ -2130,9 +2133,11 @@ a.insight {
     <div class="team-layout">
       <div class="team-founder reveal">
         <img class="founder-avatar" src="founder.jpg" alt="Chukwuebuka Ogbodo — Founder of TAI Advisory">
-        <h3 class="founder-name">Chukwuebuka Ogbodo</h3>
-        <p class="founder-role">Founder &amp; Principal</p>
-        <p class="founder-bio">Harvard Law-trained attorney, Google Policy Fellow, and HBS MBA candidate who served as public policy lead at Meta for Sub-Saharan Africa. Chukwuebuka founded TAI to create the mentorship and pathways he wished existed — channeling his experience across Harvard, Google, and Meta into developing the next generation of diverse technology policy leaders.</p>
+        <div class="founder-content">
+          <h3 class="founder-name">Chukwuebuka Ogbodo</h3>
+          <p class="founder-role">Founder &amp; Principal</p>
+          <p class="founder-bio">Harvard Law-trained attorney, Google Policy Fellow, and HBS MBA candidate who served as public policy lead at Meta for Sub-Saharan Africa. Chukwuebuka founded TAI to create the mentorship and pathways he wished existed — channeling his experience across Harvard, Google, and Meta into developing the next generation of diverse technology policy leaders.</p>
+        </div>
       </div>
       <div class="reveal">
         <p class="advisors-label">Advisory Board</p>
