@@ -943,9 +943,6 @@ img { max-width: 100%; display: block; }
    TEAM
    ============================================ */
 .team-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
   margin-top: 52px;
 }
 
@@ -953,11 +950,14 @@ img { max-width: 100%; display: block; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 36px 30px;
+  padding: 40px 36px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
   box-shadow: var(--card-shadow);
+  margin-bottom: 40px;
   transition: 
     transform 0.4s cubic-bezier(0.16,1,0.3,1),
     box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
@@ -971,12 +971,13 @@ img { max-width: 100%; display: block; }
 }
 
 .founder-avatar {
-  width: 88px; height: 88px;
+  width: 96px; height: 96px;
   border-radius: 50%;
   background: var(--surface);
   border: 3px solid var(--border);
   object-fit: cover;
   box-shadow: 0 2px 12px rgba(26,22,18,0.08);
+  margin-bottom: 16px;
 }
 
 .founder-name {
@@ -990,8 +991,8 @@ img { max-width: 100%; display: block; }
   font-size: 0.82rem;
   color: var(--accent);
   font-weight: 600;
-  margin-top: -2px;
   letter-spacing: 0.3px;
+  margin-bottom: 8px;
 }
 
 .founder-bio {
@@ -999,6 +1000,7 @@ img { max-width: 100%; display: block; }
   color: var(--ink-secondary);
   line-height: 1.78;
   font-weight: 400;
+  max-width: 560px;
 }
 
 .advisors-label {
@@ -1007,23 +1009,25 @@ img { max-width: 100%; display: block; }
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--ink-faint);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .advisors-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
 .advisor {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
+  text-align: center;
+  gap: 4px;
+  padding: 28px 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   box-shadow: var(--card-shadow);
   transition: 
     transform 0.35s cubic-bezier(0.16,1,0.3,1),
@@ -1038,7 +1042,7 @@ img { max-width: 100%; display: block; }
 }
 
 .advisor-avi {
-  width: 52px; height: 52px;
+  width: 68px; height: 68px;
   border-radius: 50%;
   background: var(--surface);
   display: flex;
@@ -1046,6 +1050,8 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
+  border: 2px solid var(--border);
+  margin-bottom: 12px;
 }
 
 .advisor-avi img {
@@ -1054,15 +1060,23 @@ img { max-width: 100%; display: block; }
 }
 
 .advisor-info h4 {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--ink);
 }
 
-.advisor-info p {
+.advisor-info .advisor-title {
   font-size: 0.78rem;
   color: var(--ink-secondary);
   font-weight: 400;
+  line-height: 1.5;
+}
+
+.advisor-info .advisor-focus {
+  font-size: 0.72rem;
+  color: var(--ink-tertiary);
+  font-weight: 400;
+  margin-top: 2px;
 }
 
 /* ============================================
@@ -1626,7 +1640,7 @@ a.insight {
 @media (max-width: 1024px) {
   :root { --section-v: 88px; --gutter: 28px; }
 
-  .about-split, .why-split, .team-layout {
+  .about-split, .why-split {
     grid-template-columns: 1fr;
     gap: 36px;
   }
@@ -1691,8 +1705,9 @@ a.insight {
   .footer-inner { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 
-  .team-layout { gap: 32px; }
   .team-founder { padding: 28px 22px; }
+  .advisors-list { grid-template-columns: 1fr; }
+  .advisor { padding: 24px 18px; }
 
   .nav-drawer a { font-size: 1.3rem; padding: 16px 0; }
 }
@@ -1927,10 +1942,8 @@ a.insight {
     <div class="team-layout">
       <div class="team-founder reveal">
         <img class="founder-avatar" src="founder.jpg" alt="Chukwuebuka Ogbodo — Founder of TAI Advisory">
-        <div>
-          <h3 class="founder-name">Chukwuebuka Ogbodo</h3>
-          <p class="founder-role">Founder &amp; Principal</p>
-        </div>
+        <h3 class="founder-name">Chukwuebuka Ogbodo</h3>
+        <p class="founder-role">Founder &amp; Principal</p>
         <p class="founder-bio">Harvard Law-trained attorney, Google Policy Fellow, and HBS MBA candidate who served as public policy lead at Meta for Sub-Saharan Africa. Chukwuebuka founded TAI to create the mentorship and pathways he wished existed — channeling his experience across Harvard, Google, and Meta into developing the next generation of diverse technology policy leaders.</p>
       </div>
       <div class="reveal">
@@ -1938,27 +1951,51 @@ a.insight {
         <div class="advisors-list">
           <div class="advisor">
             <div class="advisor-avi"><img src="avatars/jake-effoduh.jpg" alt="Jake Okechukwu Effoduh" loading="lazy"></div>
-            <div class="advisor-info"><h4>Jake Okechukwu Effoduh</h4><p>Assistant Professor, Lincoln Alexander School of Law · AI, Human Rights & Technology Law</p></div>
+            <div class="advisor-info">
+              <h4>Jake Okechukwu Effoduh</h4>
+              <p class="advisor-title">Assistant Professor, Lincoln Alexander School of Law</p>
+              <p class="advisor-focus">AI, Human Rights & Technology Law</p>
+            </div>
           </div>
           <div class="advisor">
             <div class="advisor-avi"><img src="avatars/ona-oshen.jpg" alt="Ona Oshen" loading="lazy"></div>
-            <div class="advisor-info"><h4>Ona Oshen</h4><p>Executive Director, Responsible AI Africa · AI Policy, Law & Governance</p></div>
+            <div class="advisor-info">
+              <h4>Ona Oshen</h4>
+              <p class="advisor-title">Executive Director, Responsible AI Africa</p>
+              <p class="advisor-focus">AI Policy, Law & Governance</p>
+            </div>
           </div>
           <div class="advisor">
             <div class="advisor-avi"><img src="avatars/desmond-ogba.jpg" alt="Desmond Ogba" loading="lazy"></div>
-            <div class="advisor-info"><h4>Desmond Ogba</h4><p>Partner, Templars | Harvard Law School · Corporate Law, Project Finance & Infrastructure</p></div>
+            <div class="advisor-info">
+              <h4>Desmond Ogba</h4>
+              <p class="advisor-title">Partner, Templars | Harvard Law School</p>
+              <p class="advisor-focus">Corporate Law, Project Finance & Infrastructure</p>
+            </div>
           </div>
           <div class="advisor">
             <div class="advisor-avi"><img src="avatars/bj-adesoji.jpg" alt="BJ Adesoji" loading="lazy"></div>
-            <div class="advisor-info"><h4>BJ Adesoji</h4><p>Principal Product Manager, AI Partnerships, GitLab · AI Product Strategy & Data Infrastructure</p></div>
+            <div class="advisor-info">
+              <h4>BJ Adesoji</h4>
+              <p class="advisor-title">Principal Product Manager, AI Partnerships, GitLab</p>
+              <p class="advisor-focus">AI Product Strategy & Data Infrastructure</p>
+            </div>
           </div>
           <div class="advisor">
             <div class="advisor-avi"><img src="avatars/justin-chidozie.jpg" alt="Justin Chidozie" loading="lazy"></div>
-            <div class="advisor-info"><h4>Justin Chidozie</h4><p>Co-Executive Director, CHEVS · Advocacy & Youth Empowerment</p></div>
+            <div class="advisor-info">
+              <h4>Justin Chidozie</h4>
+              <p class="advisor-title">Co-Executive Director, CHEVS</p>
+              <p class="advisor-focus">Advocacy & Youth Empowerment</p>
+            </div>
           </div>
           <div class="advisor">
             <div class="advisor-avi"><img src="avatars/marline-oluchi.jpg" alt="Marline Oluchi" loading="lazy"></div>
-            <div class="advisor-info"><h4>Marline Oluchi</h4><p>Policy & Advocacy Lead, CHEVS · Digital Rights, Gender Justice & Climate Policy</p></div>
+            <div class="advisor-info">
+              <h4>Marline Oluchi</h4>
+              <p class="advisor-title">Policy & Advocacy Lead, CHEVS</p>
+              <p class="advisor-focus">Digital Rights, Gender Justice & Climate Policy</p>
+            </div>
           </div>
         </div>
       </div>
