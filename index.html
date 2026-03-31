@@ -196,6 +196,16 @@ img { max-width: 100%; display: block; }
   transition: background 0.3s;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: var(--accent);
+  z-index: 101;
+  transition: none;
+}
+
 .nav-logo {
   display: inline-flex;
   align-items: baseline;
@@ -1842,6 +1852,7 @@ a.insight {
 <body>
 
 <!-- NAV -->
+<div class="scroll-progress" id="scrollProgress"></div>
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo"><span class="nav-logo-mark">TAI</span><span class="nav-logo-desc">Advisory</span></a>
   <ul class="nav-links">
@@ -2345,6 +2356,15 @@ document.querySelectorAll('.connect-form input').forEach(input => {
     if (e.key === 'Enter') { e.preventDefault(); input.closest('.connect-form').querySelector('button').click(); }
   });
 });
+
+// ===== SCROLL PROGRESS =====
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  progressBar.style.width = progress + '%';
+}, { passive: true });
 
 // ===== MOBILE NAV =====
 const toggle = document.getElementById('navToggle');
