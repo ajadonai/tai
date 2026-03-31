@@ -1888,7 +1888,9 @@ a.insight {
     border-radius: var(--radius);
   }
 
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer { padding: 36px var(--gutter) calc(24px + var(--safe-bottom)); }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-brand { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
 
   .team-founder { padding: 28px 22px; }
@@ -2382,7 +2384,7 @@ a.insight {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2024 TAI Advisory. All rights reserved.</span>
+    <span>&copy; 2026 TAI Advisory. All rights reserved.</span>
     <span>Developing the next generation of accountable technology leaders.</span>
   </div>
 </footer>
