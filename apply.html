@@ -373,6 +373,101 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.65;
 }
 
+/* APPLY CTA */
+.apply-section {
+  padding: 64px 0 80px;
+}
+
+.apply-card {
+  background: var(--accent);
+  border-radius: var(--radius);
+  padding: 52px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.apply-card::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.apply-card::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+
+.apply-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.apply-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.apply-desc {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 8px;
+}
+
+.apply-detail {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 28px;
+}
+
+.apply-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 32px;
+  border-radius: 100px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.apply-alt {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.apply-alt a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* FOOTER */
 .page-footer {
   border-top: 1px solid var(--border);
@@ -565,6 +660,8 @@ a { text-decoration: none; color: inherit; }
   .form-card { padding: 24px 18px; }
   .form-row { grid-template-columns: 1fr; }
   .page-footer { flex-direction: column; gap: 8px; text-align: center; }
+  .apply-card { padding: 36px 22px; }
+  .apply-actions { flex-direction: column; align-items: flex-start; }
 }
 
 /* ANIMATIONS */
@@ -723,70 +820,20 @@ a { text-decoration: none; color: inherit; }
     </div>
   </div>
 
-  <!-- APPLICATION FORM -->
-  <div class="section fade-up" id="apply">
-    <p class="section-label">Submit your application</p>
-    <h2>Apply now</h2>
-    <p class="prose" style="margin-bottom: 32px;">Complete the form below to apply. Attach your CV and tell us what makes you exceptional. Applications are reviewed on a rolling basis.</p>
-
-    <div class="form-card">
-      <form action="https://formspree.io/f/xaqljpok" method="POST" enctype="multipart/form-data" id="fellowshipForm">
-        <input type="hidden" name="_subject" value="TAI Fellowship 2026 — New Application">
-        <input type="text" name="_gotcha" style="display:none">
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Full name</label>
-            <input type="text" id="name" name="name" required placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" id="email" name="email" required placeholder="you@university.edu">
-          </div>
+  <!-- APPLY -->
+  <div class="apply-section fade-up" id="apply">
+    <div class="apply-card">
+      <div class="apply-inner">
+        <h2>Ready to apply?</h2>
+        <p class="apply-desc">Send your CV and one paragraph about what makes you exceptional. We are reviewing applications on a rolling basis.</p>
+        <p class="apply-detail">Subject line: "TAI Fellowship 2026 — [Your Name]"</p>
+        <div class="apply-actions">
+          <a href="mailto:fellowship@taiadvisory.com?subject=TAI%20Fellowship%202026%20%E2%80%94%20Application" class="apply-btn">
+            Apply now
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <span class="apply-alt">Or email <a href="mailto:fellowship@taiadvisory.com">fellowship@taiadvisory.com</a></span>
         </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="university">University / Institution</label>
-            <input type="text" id="university" name="university" required placeholder="Where you're currently enrolled">
-          </div>
-          <div class="form-group">
-            <label for="level">Level of study</label>
-            <select id="level" name="level" required>
-              <option value="" disabled selected>Select your level</option>
-              <option value="Undergraduate">Undergraduate</option>
-              <option value="Masters">Masters</option>
-              <option value="PhD">PhD</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="field">Field of study</label>
-          <input type="text" id="field" name="field" required placeholder="e.g. Law, Computer Science, Public Policy, Economics">
-        </div>
-
-        <div class="form-group">
-          <label for="paragraph">What makes you exceptional?</label>
-          <textarea id="paragraph" name="paragraph" required rows="5" placeholder="One paragraph — tell us about yourself, your work, and why this fellowship matters to you."></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="cv">Upload your CV</label>
-          <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
-          <span class="form-hint">PDF or Word document, max 10MB</span>
-        </div>
-
-        <button type="submit" class="form-submit">
-          Submit application
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
-      </form>
-
-      <div class="form-success" id="formSuccess" style="display:none;">
-        <div class="form-success-icon">&#10003;</div>
-        <h3>Application received</h3>
-        <p>Thank you for applying to the TAI Fellowship. We will review your submission and be in touch.</p>
       </div>
     </div>
   </div>
@@ -811,33 +858,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-const form = document.getElementById('fellowshipForm');
-if (form) {
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Submitting...';
-    btn.disabled = true;
-
-    try {
-      const data = new FormData(form);
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      } else {
-        btn.textContent = 'Something went wrong. Try again.';
-        btn.disabled = false;
-      }
-    } catch (err) {
-      btn.textContent = 'Something went wrong. Try again.';
-      btn.disabled = false;
-    }
   });
 }
 </script>
