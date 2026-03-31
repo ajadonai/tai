@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Apply — TAI Fellowship 2026 | Inaugural Cohort</title>
+<meta name="description" content="Apply to the TAI Fellowship — a fully funded 6-month program for students in tech, law, policy, finance, or economics who care about human rights and the rule of law. 6 inaugural fellows selected.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TAI Fellowship 2026 — Applications Open">
+<meta property="og:description" content="6 fully funded fellowships for students working at the intersection of technology, law, policy, and human rights. Publish, network, grow.">
+<meta property="og:url" content="https://ajadonai.github.io/tai/apply.html">
+<meta property="og:image" content="https://ajadonai.github.io/tai/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1B5E4B">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231B5E4B'/%3E%3Ctext x='50' y='56' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-weight='700' font-size='32' letter-spacing='3' fill='%23fff'%3ETAI%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAF7F2;
+  --bg-tint: #F3EEE6;
+  --bg-card: #FFFFFF;
+  --surface: #EDE8DF;
+  --ink: #1A1612;
+  --ink-secondary: #5C554B;
+  --ink-tertiary: #8A8279;
+  --ink-faint: #B5AFA7;
+  --accent: #1B5E4B;
+  --accent-light: #237A62;
+  --accent-bg: rgba(27, 94, 75, 0.07);
+  --accent-border: rgba(27, 94, 75, 0.14);
+  --accent-text: #164F3F;
+  --highlight: #C4581A;
+  --border: rgba(26, 22, 18, 0.07);
+  --border-hover: rgba(26, 22, 18, 0.13);
+  --card-shadow: 0 1px 2px rgba(26,22,18,0.04), 0 4px 12px rgba(26,22,18,0.03);
+  --font-display: 'Newsreader', 'Georgia', serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --max-w: 760px;
+  --gutter: 24px;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: calc(14px + var(--safe-top)) var(--gutter) 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(250, 247, 242, 0.88);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.nav-logo-mark {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 5px;
+  color: var(--accent);
+}
+
+.nav-logo-desc {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-tertiary);
+  letter-spacing: 1px;
+}
+
+.nav-back {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s;
+}
+
+.nav-back:hover { opacity: 0.7; }
+
+.page-hero {
+  padding: calc(100px + var(--safe-top)) 0 48px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.page-hero .lead {
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 56px 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.prose {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.8;
+}
+
+.prose + .prose {
+  margin-top: 16px;
+}
+
+.offering-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.offering {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 22px 20px;
+  box-shadow: var(--card-shadow);
+}
+
+.offering-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.offering h3 {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.offering p {
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+.eligibility-list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.elig-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+.elig-check {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.elig-check svg {
+  width: 12px; height: 12px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.process-steps {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.step + .step {
+  border-top: 1px solid var(--border);
+}
+
+.step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-content h3 {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.step-content p {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+.apply-box {
+  background: var(--accent);
+  border-radius: var(--radius);
+  padding: 48px 36px;
+  text-align: center;
+  margin: 56px 0 48px;
+}
+
+.apply-box h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.apply-box p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 8px;
+}
+
+.apply-box .apply-instructions {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 28px;
+}
+
+.apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 36px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.apply-btn svg {
+  width: 16px; height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.footer a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .offering-grid { grid-template-columns: 1fr; }
+  .apply-box { padding: 36px 22px; }
+  .page-hero { padding: calc(80px + var(--safe-top)) 0 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark">TAI</span><span class="nav-logo-desc">Advisory</span></a>
+  <a href="index.html" class="nav-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to site</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-hero">
+    <span class="badge">Applications Open</span>
+    <h1>TAI <em>Fellowship</em> 2026</h1>
+    <p class="lead">We are selecting 6 inaugural fellows for a fully funded, 6-month program building the next generation of leaders at the intersection of technology, policy, and human rights.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">The opportunity</p>
+    <h2>What the Fellowship offers</h2>
+    <p class="prose">The TAI Fellowship is designed to accelerate the careers of exceptional students who want to shape how technology is governed. Over six months, you will publish meaningful research, build a professional profile, and gain access to networks and mentors that would otherwise take years to reach.</p>
+    <p class="prose">Fellows are mentored directly by TAI's advisory board and extended network — learning everything we know, and working alongside experienced practitioners in AI governance, digital rights, law, and policy. You will publish articles at the intersection of technology and your area of interest, either independently or co-authored with your mentors and research collaborators. Your work will be translated internationally through the Burlington Group.</p>
+
+    <div class="offering-grid">
+      <div class="offering">
+        <div class="offering-icon">&#9672;</div>
+        <h3>Fully funded</h3>
+        <p>Competitive stipend in USD, adjusted based on years of experience and expertise level. All conference travel and networking costs covered.</p>
+      </div>
+      <div class="offering">
+        <div class="offering-icon">&#9672;</div>
+        <h3>Publish your work</h3>
+        <p>Write and publish articles in your area of interest within the TAI context. Publish solo or jointly with mentors and research collaborators.</p>
+      </div>
+      <div class="offering">
+        <div class="offering-icon">&#9672;</div>
+        <h3>Mentorship & network</h3>
+        <p>Direct mentorship from advisory board members and access to a growing network of practitioners across AI policy, law, and governance.</p>
+      </div>
+      <div class="offering">
+        <div class="offering-icon">&#9672;</div>
+        <h3>Conferences & exposure</h3>
+        <p>Attend conferences, roundtables, and convenings. Build the relationships and visibility that open doors in the tech policy space.</p>
+      </div>
+      <div class="offering">
+        <div class="offering-icon">&#9672;</div>
+        <h3>Laptop provided</h3>
+        <p>Each fellow receives a laptop to support their research and work throughout the fellowship period.</p>
+      </div>
+      <div class="offering">
+        <div class="offering-icon">&#9672;</div>
+        <h3>Certificate of completion</h3>
+        <p>All finalists receive a certificate recognizing their participation and contributions to the inaugural TAI Fellowship cohort.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Who should apply</p>
+    <h2>Eligibility</h2>
+    <p class="prose">We are looking for 6 exceptional students — across undergraduate, masters, and doctoral levels — who are working on something connected to the TAI mission.</p>
+
+    <div class="eligibility-list">
+      <div class="elig-item">
+        <div class="elig-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span>Currently enrolled as a student — undergraduate, masters, or PhD</span>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span>Working in or studying technology, law, finance, policy, or economics</span>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span>Demonstrated commitment to human rights and upholding the rule of law</span>
+      </div>
+      <div class="elig-item">
+        <div class="elig-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span>Interested in publishing research at the intersection of technology and governance</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">How it works</p>
+    <h2>Selection process</h2>
+    <p class="prose">The fellowship selection is rigorous and designed to identify candidates who are not only talented but genuinely committed to the work.</p>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Application</h3>
+          <p>Submit your CV and one paragraph explaining what makes you exceptional.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Written essay</h3>
+          <p>Shortlisted candidates will be invited to submit a written essay on a topic within the TAI mandate.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Interview rounds</h3>
+          <p>Three stages of interviews to assess your thinking, motivation, and fit with the fellowship's mission.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Paid task</h3>
+          <p>Finalists complete a compensated assignment — a real piece of work that demonstrates your capabilities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="apply-box">
+    <h2>Ready to apply?</h2>
+    <p>Send your CV and one paragraph about what makes you exceptional.</p>
+    <p class="apply-instructions">Email with the subject line: "TAI Fellowship 2026 — [Your Name]"</p>
+    <a href="mailto:founder@burlingtonconsult.com?subject=TAI%20Fellowship%202026%20%E2%80%94%20Application" class="apply-btn">
+      Apply now
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>&copy; 2026 TAI Advisory — An initiative of <a href="#">Burlington Consult</a></p>
+</div>
+
+</body>
+</html>
