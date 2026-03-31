@@ -370,117 +370,6 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.65;
 }
 
-/* APPLY CTA */
-.apply-section {
-  padding: 64px 0 80px;
-}
-
-.apply-card {
-  background: var(--accent);
-  border-radius: var(--radius);
-  padding: 56px 48px;
-  position: relative;
-  overflow: hidden;
-}
-
-.apply-card::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-}
-
-.apply-card::after {
-  content: '';
-  position: absolute;
-  bottom: -60px;
-  left: -40px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-}
-
-.apply-inner {
-  position: relative;
-  z-index: 1;
-}
-
-.apply-card h2 {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-.apply-card .apply-desc {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.7;
-  max-width: 500px;
-  margin-bottom: 8px;
-}
-
-.apply-card .apply-detail {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 32px;
-}
-
-.apply-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.apply-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  color: var(--accent);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 14px 32px;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.apply-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-
-.apply-btn svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.apply-alt {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
-}
-
-.apply-alt a {
-  color: rgba(255,255,255,0.85);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 /* FOOTER */
 .page-footer {
   border-top: 1px solid var(--border);
@@ -500,6 +389,160 @@ a { text-decoration: none; color: inherit; }
   font-weight: 500;
 }
 
+/* FORM */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  box-shadow: var(--card-shadow);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8279' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input[type="file"] {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  background: var(--bg);
+  border: 1.5px dashed var(--border-hover);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.form-group input[type="file"]:hover {
+  border-color: var(--accent);
+}
+
+.form-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  margin-top: 6px;
+}
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(27,94,75,0.25);
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-success {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.form-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.form-success p {
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .offering-grid { grid-template-columns: 1fr 1fr; }
@@ -516,9 +559,8 @@ a { text-decoration: none; color: inherit; }
   .elig-item:last-child { border-bottom: none; }
   .hero-stats { flex-wrap: wrap; gap: 20px; }
   .hero-stat { min-width: 100px; }
-  .apply-card { padding: 40px 24px; }
-  .apply-card h2 { font-size: 1.5rem; }
-  .apply-actions { flex-direction: column; align-items: flex-start; }
+  .form-card { padding: 24px 18px; }
+  .form-row { grid-template-columns: 1fr; }
   .page-footer { flex-direction: column; gap: 8px; text-align: center; }
 }
 
@@ -678,20 +720,72 @@ a { text-decoration: none; color: inherit; }
     </div>
   </div>
 
-  <!-- APPLY -->
-  <div class="apply-section fade-up">
-    <div class="apply-card">
-      <div class="apply-inner">
-        <h2>Ready to apply?</h2>
-        <p class="apply-desc">Send your CV and one paragraph about what makes you exceptional. We are reviewing applications on a rolling basis.</p>
-        <p class="apply-detail">Subject line: "TAI Fellowship 2026 — [Your Name]"</p>
-        <div class="apply-actions">
-          <a href="mailto:fellowship@taiadvisory.com?subject=TAI%20Fellowship%202026%20%E2%80%94%20Application" class="apply-btn">
-            Apply now
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <span class="apply-alt">Or email <a href="mailto:fellowship@taiadvisory.com">fellowship@taiadvisory.com</a></span>
+  <!-- APPLICATION FORM -->
+  <div class="section fade-up" id="apply">
+    <p class="section-label">Submit your application</p>
+    <h2>Apply now</h2>
+    <p class="prose" style="margin-bottom: 32px;">Complete the form below to apply. Attach your CV and tell us what makes you exceptional. Applications are reviewed on a rolling basis.</p>
+
+    <div class="form-card">
+      <!-- FORMSPREE: Replace YOUR_FORM_ID below with your Formspree form ID.
+           Setup: 1) Go to formspree.io  2) Create free account  3) New form → set email to fellowship@taiadvisory.com  4) Copy the form ID -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" id="fellowshipForm">
+        <input type="hidden" name="_subject" value="TAI Fellowship 2026 — New Application">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required placeholder="you@university.edu">
+          </div>
         </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="university">University / Institution</label>
+            <input type="text" id="university" name="university" required placeholder="Where you're currently enrolled">
+          </div>
+          <div class="form-group">
+            <label for="level">Level of study</label>
+            <select id="level" name="level" required>
+              <option value="" disabled selected>Select your level</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Masters">Masters</option>
+              <option value="PhD">PhD</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="field">Field of study</label>
+          <input type="text" id="field" name="field" required placeholder="e.g. Law, Computer Science, Public Policy, Economics">
+        </div>
+
+        <div class="form-group">
+          <label for="paragraph">What makes you exceptional?</label>
+          <textarea id="paragraph" name="paragraph" required rows="5" placeholder="One paragraph — tell us about yourself, your work, and why this fellowship matters to you."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="cv">Upload your CV</label>
+          <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+          <span class="form-hint">PDF or Word document, max 10MB</span>
+        </div>
+
+        <button type="submit" class="form-submit">
+          Submit application
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <div class="form-success" id="formSuccess" style="display:none;">
+        <div class="form-success-icon">&#10003;</div>
+        <h3>Application received</h3>
+        <p>Thank you for applying to the TAI Fellowship. We will review your submission and be in touch.</p>
       </div>
     </div>
   </div>
@@ -700,7 +794,7 @@ a { text-decoration: none; color: inherit; }
 
 <div class="container">
   <div class="page-footer">
-    <p>&copy; 2026 TAI Advisory — An initiative of Burlington Consult</p>
+    <p>&copy; 2026 TAI Advisory — An initiative of <a href="#">Burlington Consult</a></p>
     <p><a href="index.html">taiadvisory.com</a></p>
   </div>
 </div>
@@ -716,6 +810,27 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const form = document.getElementById('fellowshipForm');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    if (form.action.includes('YOUR_FORM_ID')) {
+      e.preventDefault();
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      return;
+    }
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }, 2000);
+  });
+}
 </script>
 
 </body>
