@@ -1083,115 +1083,272 @@ img { max-width: 100%; display: block; }
    PROGRAMS
    ============================================ */
 .programs-header {
-  text-align: center;
-  margin-bottom: 52px;
+  margin-bottom: 48px;
 }
 
-.programs-header .subtext { margin: 0 auto; }
+.programs-header .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 
-.programs-row {
+.programs-header .eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+.programs-header .subtext { max-width: 560px; }
+
+.prog-featured {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.prog {
+  grid-template-columns: 1fr 1fr;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
-  transition: 
-    transform 0.4s cubic-bezier(0.16,1,0.3,1),
-    box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
-    border-color 0.3s;
+  margin-bottom: 20px;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s;
 }
 
-.prog:hover {
+.prog-featured:hover {
   border-color: var(--border-hover);
   transform: translateY(-3px);
   box-shadow: var(--card-shadow-hover);
 }
 
-.prog-img {
-  width: 100%;
-  aspect-ratio: 16/9;
+.prog-featured-img {
   position: relative;
   overflow: hidden;
+  min-height: 380px;
 }
 
-.prog-img img {
-  width: 100%;
-  height: 100%;
+.prog-featured-img img {
+  width: 100%; height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.prog-img-inner {
-  width: 100%; height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.prog-img::after {
+.prog-featured-img::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(26,22,18,0.03) 0%, var(--bg-card) 92%);
+  background: linear-gradient(135deg, rgba(27,94,75,0.08) 0%, transparent 60%);
   pointer-events: none;
-  z-index: 2;
 }
 
-.prog-body {
-  padding: 26px 26px 30px;
+.prog-featured-body {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.prog-body h3 {
+.prog-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.prog-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.prog-featured-body h3 {
   font-family: var(--font-display);
-  font-size: 1.18rem;
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-
-.prog-body > p {
-  font-size: 0.86rem;
-  color: var(--ink-secondary);
-  line-height: 1.72;
+  font-size: 1.6rem;
   font-weight: 400;
-  margin-bottom: 16px;
+  color: var(--ink);
+  margin-bottom: 14px;
 }
 
-.prog-features { display: flex; flex-direction: column; gap: 7px; }
+.prog-featured-body h3 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
 
-.prog-feat {
+.prog-featured-body > p {
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.prog-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.prog-highlight {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 0.8rem;
+  gap: 10px;
+  font-size: 0.82rem;
   color: var(--ink-secondary);
   font-weight: 500;
 }
 
-.prog-feat span { color: var(--accent); font-size: 7px; }
+.prog-highlight-icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: var(--accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.prog-highlight-icon svg {
+  width: 14px; height: 14px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .prog-apply {
-  display: inline-block;
-  margin-top: 18px;
-  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--accent);
-  padding: 10px 22px;
-  border: 1.5px solid var(--accent);
+  color: #fff;
+  background: var(--accent);
+  padding: 12px 28px;
   border-radius: 100px;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  width: fit-content;
 }
 
 .prog-apply:hover {
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent-light);
   transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(27,94,75,0.25);
+}
+
+.prog-apply svg {
+  width: 15px; height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.prog-secondary {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s;
+}
+
+.prog-secondary:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.prog-secondary-img {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.prog-secondary-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prog-secondary-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, var(--bg-card) 100%);
+  pointer-events: none;
+}
+
+.prog-secondary-body {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.prog-secondary-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.prog-secondary-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.prog-secondary-body > p {
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  line-height: 1.72;
+  margin-bottom: 18px;
+}
+
+.prog-detail-row {
+  display: flex;
+  gap: 24px;
+}
+
+.prog-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--ink-tertiary);
+  font-weight: 500;
+}
+
+.prog-detail svg {
+  width: 14px; height: 14px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ============================================
@@ -1558,6 +1715,11 @@ a.insight {
   }
   
   .newsletter { padding: 56px 0; }
+
+  .prog-highlights { grid-template-columns: 1fr; }
+  .prog-featured-body { padding: 24px 22px 28px; }
+  .prog-featured-body h3 { font-size: 1.35rem; }
+  .prog-detail-row { flex-direction: column; gap: 10px; }
 }
 
 /* ============================================
@@ -1669,7 +1831,13 @@ a.insight {
     grid-template-columns: 1fr 1fr;
   }
 
-  .programs-row { grid-template-columns: 1fr; }
+  .prog-featured { grid-template-columns: 1fr; }
+  .prog-featured-img { min-height: 240px; max-height: 280px; }
+  .prog-featured-body { padding: 32px 28px; }
+  .prog-secondary { grid-template-columns: 1fr; }
+  .prog-secondary-img { min-height: 200px; max-height: 240px; }
+  .prog-secondary-img::after { background: linear-gradient(to bottom, transparent 60%, var(--bg-card) 100%); }
+  .prog-secondary-body { padding: 28px 24px; }
 
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 
@@ -2029,36 +2197,53 @@ a.insight {
       <h2 class="heading">Flagship Initiatives</h2>
       <p class="subtext">Our flagship programs are the heart of TAI — creating real pathways for young leaders to enter and shape the technology policy space.</p>
     </div>
-    <div class="programs-row stagger">
-      <div class="prog reveal">
-        <div class="prog-img">
-          <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&q=80&auto=format" alt="Young African professionals collaborating in a policy training workshop" loading="lazy">
-        </div>
-        <div class="prog-body">
-          <h3>TAI Fellowship Program</h3>
-          <p>Our flagship initiative: a fully funded, 6-month program selecting 6 inaugural fellows from across undergraduate, masters, and PhD levels. Fellows publish research, attend conferences, and receive mentorship from our advisory board — building the profile and expertise to become leaders in tech policy.</p>
-          <div class="prog-features">
-            <div class="prog-feat"><span>◆</span> 6-month fully funded fellowship for students</div>
-            <div class="prog-feat"><span>◆</span> Publish research, attend conferences, build your profile</div>
-            <div class="prog-feat"><span>◆</span> Mentorship from advisory board members</div>
-          </div>
-          <a href="apply.html" class="prog-apply">Apply for the Inaugural Cohort →</a>
-        </div>
+
+    <div class="prog-featured reveal">
+      <div class="prog-featured-img">
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&q=80&auto=format" alt="Young African professionals collaborating in a policy training workshop" loading="lazy">
       </div>
-      <div class="prog reveal">
-        <div class="prog-img">
-          <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80&auto=format" alt="Senior African stakeholders in a governance roundtable discussion" loading="lazy">
-        </div>
-        <div class="prog-body">
-          <h3>Global AI Governance Roundtables</h3>
-          <p>Intimate convenings where emerging leaders sit alongside senior policymakers and tech executives — creating dialogue across generations and building the relationships that open doors.</p>
-          <div class="prog-features">
-            <div class="prog-feat"><span>◆</span> Quarterly events blending senior leaders with emerging voices</div>
-            <div class="prog-feat"><span>◆</span> Intergenerational dialogue on AI policy and governance</div>
+      <div class="prog-featured-body">
+        <div class="prog-badge"><span class="prog-badge-dot"></span> Applications Open</div>
+        <h3>TAI <em>Fellowship</em> Program</h3>
+        <p>A fully funded, 6-month program selecting 6 inaugural fellows from across undergraduate, masters, and PhD levels. Publish research, attend conferences, and receive direct mentorship from our advisory board.</p>
+        <div class="prog-highlights">
+          <div class="prog-highlight">
+            <div class="prog-highlight-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            Funded in USD
           </div>
+          <div class="prog-highlight">
+            <div class="prog-highlight-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            Publish research
+          </div>
+          <div class="prog-highlight">
+            <div class="prog-highlight-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            Board mentorship
+          </div>
+          <div class="prog-highlight">
+            <div class="prog-highlight-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            Laptop provided
+          </div>
+        </div>
+        <a href="apply.html" class="prog-apply">Apply for the Inaugural Cohort <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+
+    <div class="prog-secondary reveal">
+      <div class="prog-secondary-img">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80&auto=format" alt="Senior African stakeholders in a governance roundtable discussion" loading="lazy">
+      </div>
+      <div class="prog-secondary-body">
+        <span class="prog-secondary-label">Quarterly Convenings</span>
+        <h3>Global AI Governance Roundtables</h3>
+        <p>Intimate convenings where emerging leaders sit alongside senior policymakers and tech executives — creating dialogue across generations and building the relationships that open doors.</p>
+        <div class="prog-detail-row">
+          <div class="prog-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Quarterly events</div>
+          <div class="prog-detail"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Senior leaders + emerging voices</div>
+          <div class="prog-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Cross-border dialogue</div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
