@@ -1038,17 +1038,19 @@ img { max-width: 100%; display: block; }
 }
 
 .advisor-avi {
-  width: 40px; height: 40px;
+  width: 52px; height: 52px;
   border-radius: 50%;
   background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--ink-tertiary);
+  overflow: hidden;
+}
+
+.advisor-avi img {
+  width: 100%; height: 100%;
+  object-fit: cover;
 }
 
 .advisor-info h4 {
@@ -1935,20 +1937,28 @@ a.insight {
         <p class="advisors-label">Advisory Board</p>
         <div class="advisors-list">
           <div class="advisor">
-            <div class="advisor-avi">AB</div>
-            <div class="advisor-info"><h4>Advisory Member</h4><p>AI Ethics Researcher · Stanford University</p></div>
+            <div class="advisor-avi"><img src="avatars/jake-effoduh.jpg" alt="Jake Okechukwu Effoduh" loading="lazy"></div>
+            <div class="advisor-info"><h4>Jake Okechukwu Effoduh</h4><p>Assistant Professor, Lincoln Alexander School of Law · AI, Human Rights & Technology Law</p></div>
           </div>
           <div class="advisor">
-            <div class="advisor-avi">CD</div>
-            <div class="advisor-info"><h4>Advisory Member</h4><p>Former Senior Policy Director · U.S. Government</p></div>
+            <div class="advisor-avi"><img src="avatars/ona-oshen.jpg" alt="Ona Oshen" loading="lazy"></div>
+            <div class="advisor-info"><h4>Ona Oshen</h4><p>Executive Director, Responsible AI Africa · AI Policy, Law & Governance</p></div>
           </div>
           <div class="advisor">
-            <div class="advisor-avi">EF</div>
-            <div class="advisor-info"><h4>Advisory Member</h4><p>Digital Rights Advocate · Access Now</p></div>
+            <div class="advisor-avi"><img src="avatars/desmond-ogba.jpg" alt="Desmond Ogba" loading="lazy"></div>
+            <div class="advisor-info"><h4>Desmond Ogba</h4><p>Partner, Templars | Harvard Law School · Corporate Law, Project Finance & Infrastructure</p></div>
           </div>
           <div class="advisor">
-            <div class="advisor-avi">GH</div>
-            <div class="advisor-info"><h4>Advisory Member</h4><p>Tech Policy Lead · African Development Bank</p></div>
+            <div class="advisor-avi"><img src="avatars/bj-adesoji.jpg" alt="BJ Adesoji" loading="lazy"></div>
+            <div class="advisor-info"><h4>BJ Adesoji</h4><p>Principal Product Manager, AI Partnerships, GitLab · AI Product Strategy & Data Infrastructure</p></div>
+          </div>
+          <div class="advisor">
+            <div class="advisor-avi"><img src="avatars/justin-chidozie.jpg" alt="Justin Chidozie" loading="lazy"></div>
+            <div class="advisor-info"><h4>Justin Chidozie</h4><p>Co-Executive Director, CHEVS · Advocacy & Youth Empowerment</p></div>
+          </div>
+          <div class="advisor">
+            <div class="advisor-avi"><img src="avatars/marline-oluchi.jpg" alt="Marline Oluchi" loading="lazy"></div>
+            <div class="advisor-info"><h4>Marline Oluchi</h4><p>Policy & Advocacy Lead, CHEVS · Digital Rights, Gender Justice & Climate Policy</p></div>
           </div>
         </div>
       </div>
